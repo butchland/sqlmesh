@@ -686,6 +686,7 @@ class GenericContext(BaseContext, t.Generic[C]):
         end: t.Optional[TimeLike] = None,
         execution_time: t.Optional[TimeLike] = None,
         expand: t.Union[bool, t.Iterable[str]] = False,
+        seed_limit: t.Optional[int] = None,
         **kwargs: t.Any,
     ) -> exp.Expression:
         """Renders a model's query, expanding macros with provided kwargs, and optionally expanding referenced models.
@@ -726,6 +727,8 @@ class GenericContext(BaseContext, t.Generic[C]):
                     **kwargs,
                 )
             )
+            if seed_limit:
+                df = df.head(seed_limit)
             return next(pandas_to_sql(t.cast(pd.DataFrame, df), model.columns_to_types))
 
         return model.render_query_or_raise(

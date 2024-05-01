@@ -154,6 +154,7 @@ class SQLMeshMagics(Magics):
     @argument("--end", "-e", type=str, help="End date to render.")
     @argument("--execution-time", type=str, help="Execution time.")
     @argument("--dialect", "-d", type=str, help="The rendered dialect.")
+    @argument("--seed-limit", "-l", type=int, default=None, help="Limit seed rows displayed. defaults to no limit")
     @line_cell_magic
     @pass_sqlmesh_context
     def model(self, context: Context, line: str, sql: t.Optional[str] = None) -> None:
@@ -209,6 +210,7 @@ class SQLMeshMagics(Magics):
                 start=args.start,
                 end=args.end,
                 execution_time=args.execution_time,
+                seed_limit= args.seed_limit
             ).sql(pretty=True, dialect=args.dialect or model.dialect)
         )
 
@@ -474,6 +476,7 @@ class SQLMeshMagics(Magics):
     )
     @argument("--dialect", type=str, help="SQL dialect to render.")
     @argument("--no-format", action="store_true", help="Disable fancy formatting of the query.")
+    @argument("--seed-limit", "-l", type=int, default=None, help="Limit seed rows displayed. defaults to no limit")
     @line_magic
     @pass_sqlmesh_context
     def render(self, context: Context, line: str) -> None:
@@ -487,6 +490,7 @@ class SQLMeshMagics(Magics):
             end=args.end,
             execution_time=args.execution_time,
             expand=args.expand,
+            seed_limit=args.seed_limit
         )
 
         sql = query.sql(pretty=True, dialect=args.dialect or context.config.dialect)
