@@ -49,6 +49,8 @@ comm==0.2.2
     # via
     #   ipykernel
     #   ipywidgets
+coverage==7.5.0
+    # via pytest-cov
 croniter==2.0.5
     # via sqlmesh
 dateparser==1.2.0
@@ -61,6 +63,8 @@ defusedxml==0.7.1
     # via nbconvert
 duckdb==0.10.2
     # via sqlmesh
+execnet==2.1.1
+    # via pytest-xdist
 executing==2.0.1
     # via stack-data
 fastapi==0.110.2
@@ -89,6 +93,8 @@ idna==3.7
     #   httpx
     #   jsonschema
     #   requests
+iniconfig==2.0.0
+    # via pytest
 ipykernel==6.29.4
     # via
     #   jupyter
@@ -120,7 +126,7 @@ json5==0.9.25
     # via jupyterlab-server
 jsonpointer==2.4
     # via jsonschema
-jsonschema==4.21.1
+jsonschema==4.22.0
     # via
     #   jupyter-events
     #   jupyterlab-server
@@ -220,6 +226,7 @@ packaging==24.0
     #   jupyterlab
     #   jupyterlab-server
     #   nbconvert
+    #   pytest
     #   qtconsole
     #   qtpy
 pandas==2.2.2
@@ -232,6 +239,8 @@ pexpect==4.9.0
     # via ipython
 platformdirs==4.2.1
     # via jupyter-core
+pluggy==1.5.0
+    # via pytest
 prometheus-client==0.20.0
     # via jupyter-server
 prompt-toolkit==3.0.43
@@ -263,6 +272,16 @@ pygments==2.17.2
     #   nbconvert
     #   qtconsole
     #   rich
+pytest==8.2.0
+    # via
+    #   pytest-asyncio
+    #   pytest-cov
+    #   pytest-mock
+    #   pytest-xdist
+pytest-asyncio==0.23.6
+pytest-cov==5.0.0
+pytest-mock==3.14.0
+pytest-xdist==3.6.1
 python-dateutil==2.9.0.post0
     # via
     #   arrow
